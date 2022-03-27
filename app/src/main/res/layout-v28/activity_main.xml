@@ -6,112 +6,101 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/titleKertas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/kertas"
-        android:textColor="@color/title_orange"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/titleKertas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/kertas"
+            android:textSize="32sp"
+            android:layout_marginTop="36dp"
+            android:textColor="@color/title_orange"
+            android:textFontWeight="700"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+        <TextView
+            android:id="@+id/titleGunting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gunting"
+            android:textSize="32sp"
+            app:layout_constraintTop_toBottomOf="@id/titleKertas"
+            app:layout_constraintStart_toStartOf="@id/titleKertas"
+            app:layout_constraintEnd_toEndOf="@id/titleKertas"
+            />
+        <TextView
+            android:id="@+id/titleBatu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/batu"
+            android:textSize="32sp"
+            app:layout_constraintTop_toBottomOf="@id/titleGunting"
+            app:layout_constraintStart_toStartOf="@id/titleKertas"
+            app:layout_constraintEnd_toEndOf="@id/titleKertas"/>
 
-    <TextView
-        android:id="@+id/titleGunting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/gunting"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:textColor="@color/title_green"
-        app:layout_constraintEnd_toEndOf="@id/titleKertas"
-        app:layout_constraintStart_toStartOf="@id/titleKertas"
-        app:layout_constraintTop_toBottomOf="@id/titleKertas" />
+<!--    player options-->
 
-    <TextView
-        android:id="@+id/titleBatu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/batu"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:textColor="@color/title_purple"
-        app:layout_constraintEnd_toEndOf="@id/titleKertas"
-        app:layout_constraintStart_toStartOf="@id/titleKertas"
-        app:layout_constraintTop_toBottomOf="@id/titleGunting" />
-
-
-    <!--    player options-->
-
-    <!--    player title -->
+<!--    player title -->
     <TextView
         android:id="@+id/titlePlayer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/player_1"
+        android:textSize="18sp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:text="@string/player_1"
-        android:textColor="@color/player_blue"
-        android:textSize="30sp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titleBatu" />
+        app:layout_constraintTop_toBottomOf="@id/titleBatu"/>
 
-    <!--    batu player options-->
+<!--    batu player options-->
     <androidx.cardview.widget.CardView
         android:id="@+id/batuCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
         android:layout_marginTop="16dp"
         android:padding="8dp"
-        app:cardCornerRadius="8dp"
         app:cardElevation="0dp"
         app:layout_constraintStart_toStartOf="@id/titlePlayer"
         app:layout_constraintTop_toBottomOf="@+id/titlePlayer">
-
-        <ImageView
-            android:id="@+id/optbatu"
-            android:layout_width="@dimen/image_dimension"
-            android:layout_height="@dimen/image_dimension"
-            android:contentDescription="@string/option_batu"
-            android:padding="@dimen/padding_image"
-            android:src="@drawable/batu" />
+    <ImageView
+        android:id="@+id/optbatu"
+        android:layout_width="@dimen/image_dimension"
+        android:layout_height="@dimen/image_dimension"
+        android:contentDescription="@string/option_batu"
+        android:padding="@dimen/padding_image"
+        android:src="@drawable/batu" />
     </androidx.cardview.widget.CardView>
-    <!--    kertas player ooptions-->
+<!--    kertas player ooptions-->
     <androidx.cardview.widget.CardView
         android:id="@+id/kertasCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
         android:layout_marginTop="16dp"
         android:padding="8dp"
-        app:cardCornerRadius="8dp"
         app:cardElevation="0dp"
         app:layout_constraintStart_toStartOf="@id/batuCard"
         app:layout_constraintTop_toBottomOf="@+id/batuCard">
-
-        <ImageView
-            android:id="@+id/optKertas"
-            android:layout_width="@dimen/image_dimension"
-            android:layout_height="@dimen/image_dimension"
-            android:contentDescription="@string/option_kertas"
-            android:padding="@dimen/padding_image"
-            android:src="@drawable/kertas" />
+    <ImageView
+        android:id="@+id/optKertas"
+        android:layout_width="@dimen/image_dimension"
+        android:layout_height="@dimen/image_dimension"
+        android:padding="@dimen/padding_image"
+        android:contentDescription="@string/option_kertas"
+        android:src="@drawable/kertas" />
     </androidx.cardview.widget.CardView>
-    <!--    gunting player options-->
+<!--    gunting player options-->
     <androidx.cardview.widget.CardView
         android:id="@+id/guntingCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
         android:layout_marginTop="16dp"
         android:padding="8dp"
-        app:cardCornerRadius="8dp"
         app:cardElevation="0dp"
         app:layout_constraintStart_toStartOf="@id/kertasCard"
         app:layout_constraintTop_toBottomOf="@+id/kertasCard">
-
         <ImageView
             android:id="@+id/optGunting"
             android:layout_width="@dimen/image_dimension"
@@ -121,44 +110,41 @@
             android:src="@drawable/gunting" />
     </androidx.cardview.widget.CardView>
 
-    <!--    status text middle-->
+<!--    status text middle-->
     <TextView
         android:id="@+id/txtStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
         android:text="@string/versus"
-        android:textColor="@color/chilli_red"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/guntingCard"
-        app:layout_constraintEnd_toStartOf="@id/kertasCardCom"
+        android:textSize="24sp"
+        android:layout_marginStart="12dp"
         app:layout_constraintStart_toEndOf="@id/kertasCard"
-        app:layout_constraintTop_toBottomOf="@id/titleBatu" />
+        app:layout_constraintEnd_toStartOf="@id/kertasCardCom"
+        app:layout_constraintBottom_toBottomOf="@id/guntingCard"
+        app:layout_constraintTop_toBottomOf="@id/titleBatu"/>
 
-    <!--    computer options-->
+<!--    computer options-->
 
-    <!--    computer title-->
+<!--    computer title-->
     <TextView
         android:id="@+id/titleCom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
         android:text="@string/com"
-        android:textColor="@color/player_blue"
-        android:textSize="30sp"
-        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titleBatu" />
-    <!--    batu card com-->
+        app:layout_constraintTop_toBottomOf="@id/titleBatu"
+        />
+<!--    batu card com-->
     <androidx.cardview.widget.CardView
         android:id="@+id/batuCardCom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
         android:layout_marginTop="16dp"
         android:padding="8dp"
-        app:cardCornerRadius="8dp"
         app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="@id/titleCom"
         app:layout_constraintTop_toBottomOf="@+id/titleCom">
@@ -169,18 +155,18 @@
             android:layout_height="@dimen/image_dimension"
             android:contentDescription="@string/option_batu"
             android:padding="@dimen/padding_image"
-            android:src="@drawable/batu"
             app:layout_constraintEnd_toEndOf="@id/titleCom"
-            app:layout_constraintTop_toBottomOf="@+id/titlePlayer" />
+            app:layout_constraintTop_toBottomOf="@+id/titlePlayer"
+            android:src="@drawable/batu" />
     </androidx.cardview.widget.CardView>
-    <!--    kertasCardCom-->
+<!--    kertasCardCom-->
     <androidx.cardview.widget.CardView
         android:id="@+id/kertasCardCom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
         android:layout_marginTop="16dp"
         android:padding="8dp"
-        app:cardCornerRadius="8dp"
         app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="@id/batuCardCom"
         app:layout_constraintTop_toBottomOf="@+id/batuCardCom">
@@ -189,13 +175,13 @@
             android:id="@+id/optKertasCom"
             android:layout_width="@dimen/image_dimension"
             android:layout_height="@dimen/image_dimension"
-            android:contentDescription="@string/option_kertas"
             android:padding="@dimen/padding_image"
-            android:src="@drawable/kertas"
+            android:contentDescription="@string/option_kertas"
             app:layout_constraintEnd_toEndOf="@id/titleCom"
-            app:layout_constraintTop_toBottomOf="@+id/batuCardCom" />
+            app:layout_constraintTop_toBottomOf="@+id/batuCardCom"
+            android:src="@drawable/kertas" />
     </androidx.cardview.widget.CardView>
-    <!--    gunting card com-->
+<!--    gunting card com-->
     <androidx.cardview.widget.CardView
         android:id="@+id/guntingCardCom"
         android:layout_width="wrap_content"
@@ -218,16 +204,16 @@
             app:layout_constraintTop_toBottomOf="@+id/kertasCardCom" />
     </androidx.cardview.widget.CardView>
 
-    <!--    refresh image-->
+<!--    refresh image-->
     <ImageView
         android:id="@+id/refresh"
         android:layout_width="@dimen/image_dimension"
         android:layout_height="@dimen/image_dimension"
         android:layout_marginBottom="24dp"
         android:contentDescription="@string/refresh_image"
-        android:src="@drawable/refresh"
+        app:layout_constraintEnd_toEndOf="@id/titleCom"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/titleCom" />
+        android:src="@drawable/refresh" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
