@@ -12,9 +12,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/kertas"
+        android:fontFamily="@font/comic_neue_bold"
         android:textColor="@color/title_orange"
         android:textSize="32sp"
-        android:textStyle="bold"
+        android:textFontWeight="900"
+        android:rotation="-12"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,9 +26,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/gunting"
+        android:fontFamily="@font/comic_neue_bold"
         android:textSize="32sp"
-        android:textStyle="bold"
         android:textColor="@color/title_green"
+        android:textFontWeight="900"
+        android:rotation="-12"
+        android:layout_marginStart="24dp"
         app:layout_constraintEnd_toEndOf="@id/titleKertas"
         app:layout_constraintStart_toStartOf="@id/titleKertas"
         app:layout_constraintTop_toBottomOf="@id/titleKertas" />
@@ -36,9 +41,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/batu"
+        android:fontFamily="@font/comic_neue_bold"
         android:textSize="32sp"
-        android:textStyle="bold"
         android:textColor="@color/title_purple"
+        android:textFontWeight="900"
+        android:rotation="-12"
+        android:layout_marginStart="24dp"
         app:layout_constraintEnd_toEndOf="@id/titleKertas"
         app:layout_constraintStart_toStartOf="@id/titleKertas"
         app:layout_constraintTop_toBottomOf="@id/titleGunting" />
@@ -54,9 +62,10 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:text="@string/player_1"
+        android:fontFamily="@font/comic_neue_bold"
         android:textColor="@color/player_blue"
         android:textSize="30sp"
-        android:textStyle="bold"
+        android:textFontWeight="900"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleBatu" />
 
@@ -126,15 +135,17 @@
         android:id="@+id/txtStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:fontFamily="@font/comic_neue_bold"
+        android:rotation="-15"
         android:text="@string/versus"
+        android:textAlignment="center"
         android:textColor="@color/chilli_red"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/guntingCard"
+        android:textSize="48sp"
+        android:textFontWeight="900"
+        app:layout_constraintBottom_toBottomOf="@id/kertasCard"
         app:layout_constraintEnd_toStartOf="@id/kertasCardCom"
         app:layout_constraintStart_toEndOf="@id/kertasCard"
-        app:layout_constraintTop_toBottomOf="@id/titleBatu" />
+        app:layout_constraintTop_toTopOf="@id/kertasCard" />
 
     <!--    computer options-->
 
@@ -146,9 +157,10 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:text="@string/com"
+        android:fontFamily="@font/comic_neue_bold"
         android:textColor="@color/player_blue"
         android:textSize="30sp"
-        android:textStyle="bold"
+        android:textFontWeight="900"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleBatu" />
     <!--    batu card com-->

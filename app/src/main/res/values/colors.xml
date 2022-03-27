@@ -8,11 +8,13 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="baby_blue">#66cccc</color>
+    <color name="baby_blue">#C7D9E7</color>
+    <color name="winning_background">#9FCE63</color>
     <color name="title_green">#FF018786</color>
-    <color name="title_orange">#f6b26b</color>
-    <color name="title_purple">#8e7cc3</color>
-    <color name="player_blue">#6fa8dc</color>
-    <color name="chilli_red">#f44336</color>
+    <color name="title_orange">#ECB576</color>
+    <color name="title_purple">#9DC384</color>
+    <color name="player_blue">#4FADEA</color>
+    <color name="chilli_red">#EA3323</color>
+    <color name="background_blue">#2F6EBA</color>
 
 </resources>

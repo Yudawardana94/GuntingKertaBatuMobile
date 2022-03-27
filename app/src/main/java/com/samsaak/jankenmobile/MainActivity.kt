@@ -37,11 +37,7 @@ class MainActivity : AppCompatActivity() {
 //      set refresh game
         val refreshButton = findViewById<ImageView>(R.id.refresh)
         refreshButton.setOnClickListener {
-            playerOneChoice = ""
-            comChoice = ""
-            setBackground("", "")
-            middleTextStatus.text = getString(R.string.versus)
-            middleTextStatus.setBackgroundColor(Color.TRANSPARENT)
+            resetButton()
         }
     }
 
@@ -54,6 +50,18 @@ class MainActivity : AppCompatActivity() {
 
         checkResult()
     }
+
+    private fun resetButton() {
+        playerOneChoice = ""
+        comChoice = ""
+        setBackground("", "")
+        middleTextStatus.text = getString(R.string.versus)
+        middleTextStatus.setBackgroundColor(Color.TRANSPARENT)
+        middleTextStatus.setTextColor(resources.getColor(R.color.chilli_red))
+        middleTextStatus.setTextSize(1, 36F)
+
+    }
+
     private fun initialConfig () {
         batuPlayer= findViewById(R.id.optbatu)
         guntingPlayer = findViewById(R.id.optGunting)
@@ -105,8 +113,14 @@ class MainActivity : AppCompatActivity() {
     private fun checkResult() {
         val result = computeResult()
         middleTextStatus.text = result
-        middleTextStatus.setBackgroundColor(resources.getColor(R.color.baby_blue))
         middleTextStatus.setPadding(36, 12, 36, 12)
+        middleTextStatus.setTextColor(Color.WHITE)
+        middleTextStatus.setTextSize(0, 48F)
+
+        when(result) {
+            "Draw" -> middleTextStatus.setBackgroundColor(resources.getColor(R.color.background_blue))
+            else -> middleTextStatus.setBackgroundColor(resources.getColor(R.color.winning_background))
+        }
 
         Log.i("Result", "Game Result: $result")
     }
@@ -115,22 +129,22 @@ class MainActivity : AppCompatActivity() {
         if(playerOneChoice == "" && comChoice == "") return "Vs"
         val result = when {
             (playerOneChoice == "Kertas" && comChoice == "Batu") -> {
-                "Player 1 Win !!"
+                "Player 1\nMenang !!"
             }
             (playerOneChoice == "Kertas" && comChoice == "Gunting") -> {
-                "Com Win !!"
+                "Computer\nMenang !!"
             }
             (playerOneChoice == "Gunting" && comChoice == "Batu") -> {
-                "Com Win !!"
+                "Computer\nMenang !!"
             }
             (playerOneChoice == "Gunting" && comChoice == "Kertas") -> {
-                "Player 1 Win !!"
+                "Player 1\nMenang !!"
             }
             (playerOneChoice == "Batu" && comChoice == "Gunting") -> {
-                "Player 1 Win !!"
+                "Player 1\nMenang !!"
             }
             (playerOneChoice == "Batu" && comChoice == "Kertas") -> {
-                "Com Win !!"
+                "Computer\nMenang !!"
             }
             else -> "Draw"
         }
