@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">JankenMobile</string>
+    <string name="kertas">Kertas</string>
+    <string name="gunting">Gunting</string>
+    <string name="batu">Batu</string>
+    <string name="player_1">Player 1</string>
+    <string name="option_gunting">option gunting</string>
+    <string name="option_kertas">option_kertas</string>
+    <string name="option_batu">option batu</string>
+    <string name="versus">Vs</string>
+    <string name="com">COM</string>
+</resources>
