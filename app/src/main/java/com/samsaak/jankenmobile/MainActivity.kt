@@ -1,5 +1,6 @@
 package com.samsaak.jankenmobile
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,11 +8,21 @@ import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatDelegate
+import com.samsaak.jankenmobile.LandingPage.LandingPageActivity
+import com.samsaak.jankenmobile.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    //set binding
+    private lateinit var binding: ActivityMainBinding
+
     // Init options
     private val optionsChoice = arrayOf("Batu", "Gunting", "Kertas")
+
+    // Get parcelable data
+    private val data by lazy {
+        intent.getParcelableExtra<Foe>("data")
+    }
 
     private lateinit var playerOneChoice: String
 
@@ -25,11 +36,18 @@ class MainActivity : AppCompatActivity() {
     private lateinit var kertasCom: ImageView
     private lateinit var middleTextStatus: TextView
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
+//        show snackbar
+//        val sbar = Snackbar.make(this,"panggil snack bar ${data?.name}", Snackbar.LENGTH_INDEFINITE)
+//        binding.run{
+//            binding.root.showSnackbar("panggil snack bar ${data?.name}")
+//        }
+        binding.root.showSnackbar("panggil snack bar ${data?.foe} ${data?.player}")
 
 //      Set player choice
         initialConfig()
@@ -38,6 +56,13 @@ class MainActivity : AppCompatActivity() {
         val refreshButton = findViewById<ImageView>(R.id.refresh)
         refreshButton.setOnClickListener {
             resetButton()
+        }
+        val icnClose = findViewById<ImageView>(R.id.icnClose)
+        icnClose.setOnClickListener { view ->
+            startActivity(
+                Intent(this,LandingPageActivity::class.java)
+                    .putExtra("name", "yuda")
+            )
         }
     }
 

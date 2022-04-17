@@ -8,7 +8,13 @@
         <entry key="app/src/main/res/drawable/kertas.xml" value="0.1055" />
         <entry key="app/src/main/res/drawable/refresh.xml" value="0.1055" />
         <entry key="app/src/main/res/layout-v28/activity_main.xml" value="0.12291666666666666" />
+        <entry key="app/src/main/res/layout/activity_landing_page.xml" value="0.2171875" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_menu.xml" value="0.2171875" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.2171875" />
+        <entry key="app/src/main/res/layout/fragment_first_landing.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_second_landing.xml" value="0.2171875" />
+        <entry key="app/src/main/res/layout/fragment_third_landing.xml" value="0.2171875" />
       </map>
     </option>
   </component>

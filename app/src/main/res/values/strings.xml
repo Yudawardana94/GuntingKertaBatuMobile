@@ -10,4 +10,9 @@
     <string name="versus">Vs</string>
     <string name="com">COM</string>
     <string name="refresh_image">Refresh image</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment_1">Bermain suit melawan pemain</string>
+    <string name="hello_blank_fragment_2">Bermain suit melawan komputer</string>
+    <string name="hello_blank_fragment_3">Tuliskan namamu dibawah</string>
+    <string name="image_from_url">Kertas Gunting Batu</string>
 </resources>

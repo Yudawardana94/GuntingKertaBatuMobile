@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MenuActivity">
+
+    <TextView
+        android:id="@+id/txtMenuTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pilih Lawanmu"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/imgVsPemain"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/landing_page1"
+        app:layout_constraintBottom_toTopOf="@id/txtVsPemain"
+        app:layout_constraintEnd_toEndOf="@id/txtMenuTitle"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@id/txtMenuTitle"
+        app:layout_constraintTop_toBottomOf="@id/txtMenuTitle"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/txtVsPemain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="vs Pemain"
+        app:layout_constraintEnd_toEndOf="@id/imgVsPemain"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@id/imgVsPemain"
+        app:layout_constraintTop_toBottomOf="@id/imgVsPemain" />
+
+    <ImageView
+        android:id="@+id/imgVsKomputer"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/landing_page2"
+        app:layout_constraintTop_toBottomOf="@id/txtVsPemain"
+        app:layout_constraintStart_toStartOf="@id/txtVsPemain"
+        app:layout_constraintEnd_toEndOf="@id/txtVsPemain"
+        app:layout_constraintBottom_toTopOf="@id/txtVsKomputer"
+        app:layout_constraintVertical_chainStyle="packed"/>
+
+    <TextView
+        android:id="@+id/txtVsKomputer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="120dp"
+        android:text="vs CPU"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/imgVsKomputer"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/imgVsKomputer"
+        app:layout_constraintTop_toBottomOf="@id/imgVsKomputer"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
