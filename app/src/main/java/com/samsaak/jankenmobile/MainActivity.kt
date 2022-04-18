@@ -78,7 +78,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun initialConfig() {
         binding.run {
-            titlePlayer.text = data?.player
+            if(data?.player == "") titlePlayer.text = "Player 1"
+            else titlePlayer.text = data?.player
             titleCom.text = data?.foe
 
             //      set refresh game

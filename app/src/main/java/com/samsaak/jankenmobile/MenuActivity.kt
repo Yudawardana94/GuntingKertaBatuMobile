@@ -22,8 +22,13 @@ class MenuActivity : AppCompatActivity() {
         binding.run {
             binding.root.showSnackbar("Selamat datang ${data?.name}")
 
+            if(data?.name != "") {
             txtVsKomputer.text = "${data?.name} vs CPU"
             txtVsPemain.text = "${data?.name} vs Player 2"
+            } else {
+                txtVsKomputer.text = "Player 1 vs CPU"
+                txtVsPemain.text = "Player 1 vs Player 2"
+            }
 
             imgVsKomputer.setOnClickListener { viewCom ->
                 foe = Foe(foe = "CPU", player = "${data?.name}")

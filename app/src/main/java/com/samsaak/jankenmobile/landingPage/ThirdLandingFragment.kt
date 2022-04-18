@@ -59,8 +59,6 @@ class ThirdLandingFragment : Fragment() {
         binding.txtInput.addTextChangedListener {
             comm.onDataPass(binding.txtInput.text.toString())
         }
-        // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_third_landing, container, false)
         return binding.root
     }
 

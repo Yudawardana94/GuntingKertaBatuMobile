@@ -17,7 +17,7 @@ class PagerAdapter(fragment: FragmentManager): FragmentStatePagerAdapter(fragmen
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-        return fragmentTitleList[position].toString()
+        return fragmentTitleList[position]
     }
 
     fun addFragment(fragment: Fragment, title: String) {
