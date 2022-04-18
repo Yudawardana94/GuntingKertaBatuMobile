@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="@color/title_green"
-    tools:context=".LandingPage.LandingPageActivity">
+    tools:context=".landingPage.LandingPageActivity">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vp"

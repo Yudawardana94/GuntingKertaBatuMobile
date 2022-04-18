@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
-import com.samsaak.jankenmobile.LandingPage.LandingPageActivity
+import com.samsaak.jankenmobile.landingPage.LandingPageActivity
 import com.samsaak.jankenmobile.databinding.ActivitySplashBinding
 import java.util.Timer
 import kotlin.concurrent.schedule
@@ -23,6 +23,7 @@ class SplashActivity : AppCompatActivity() {
             loadImage()
             Timer().schedule(3000) {
                 startActivity(Intent(this@SplashActivity, LandingPageActivity::class.java))
+                finish()
             }
         }
     }

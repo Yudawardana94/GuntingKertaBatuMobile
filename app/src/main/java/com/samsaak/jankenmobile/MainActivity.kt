@@ -5,11 +5,15 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
-import com.samsaak.jankenmobile.LandingPage.LandingPageActivity
+import com.samsaak.jankenmobile.landingPage.LandingPageActivity
 import com.samsaak.jankenmobile.databinding.ActivityMainBinding
+import kotlinx.android.synthetic.main.dialog_result.view.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,7 +29,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private lateinit var playerOneChoice: String
-
     private lateinit var comChoice: String
 
     private lateinit var batuPlayer: ImageView
@@ -35,6 +38,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var guntingCom: ImageView
     private lateinit var kertasCom: ImageView
     private lateinit var middleTextStatus: TextView
+    private var isFinish: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,53 +46,54 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
-//        show snackbar
-//        val sbar = Snackbar.make(this,"panggil snack bar ${data?.name}", Snackbar.LENGTH_INDEFINITE)
-//        binding.run{
-//            binding.root.showSnackbar("panggil snack bar ${data?.name}")
-//        }
-        binding.root.showSnackbar("panggil snack bar ${data?.foe} ${data?.player}")
-
 //      Set player choice
         initialConfig()
-
-//      set refresh game
-        val refreshButton = findViewById<ImageView>(R.id.refresh)
-        refreshButton.setOnClickListener {
-            resetButton()
-        }
-        val icnClose = findViewById<ImageView>(R.id.icnClose)
-        icnClose.setOnClickListener { view ->
-            startActivity(
-                Intent(this,LandingPageActivity::class.java)
-                    .putExtra("name", "yuda")
-            )
-        }
     }
 
-    private fun onImageClicked(value: String) {
-        val randomCom = optionsChoice.random()
-        playerOneChoice = value
-        comChoice = randomCom
-        setBackground(value, comChoice)
-        Log.i("Player Input", "Player Use: $value")
+    private fun onImageClicked(value: String, key: String) {
+        if (data?.foe == "CPU") {
+            val randomCom = optionsChoice.random()
+            playerOneChoice = value
+            comChoice = randomCom
+            setBackground(value, comChoice)
+            Log.i("Player Input", "Player Use: $value")
 
-        checkResult()
+            checkResult()
+        } else {
+            if (key == "player") twoPlayerSet(value, "", key)
+            if (key == "cpu") twoPlayerSet("", value, key)
+        }
     }
 
     private fun resetButton() {
         playerOneChoice = ""
         comChoice = ""
+        isFinish = false
         setBackground("", "")
         middleTextStatus.text = getString(R.string.versus)
         middleTextStatus.setBackgroundColor(Color.TRANSPARENT)
         middleTextStatus.setTextColor(resources.getColor(R.color.chilli_red))
         middleTextStatus.setTextSize(1, 36F)
-
     }
 
-    private fun initialConfig () {
-        batuPlayer= findViewById(R.id.optbatu)
+    private fun initialConfig() {
+        binding.run {
+            titlePlayer.text = data?.player
+            titleCom.text = data?.foe
+
+            //      set refresh game
+            refresh.setOnClickListener {
+                resetButton()
+            }
+            icnClose.setOnClickListener { view ->
+                startActivity(
+                    Intent(this@MainActivity, LandingPageActivity::class.java)
+                        .putExtra("name", "yuda")
+                )
+            }
+        }
+
+        batuPlayer = findViewById(R.id.optbatu)
         guntingPlayer = findViewById(R.id.optGunting)
         kertasPlayer = findViewById(R.id.optKertas)
         batuCom = findViewById(R.id.optbatuCom)
@@ -99,20 +104,31 @@ class MainActivity : AppCompatActivity() {
         playerOneChoice = ""
         comChoice = ""
 
+
         batuPlayer.setOnClickListener {
-            onImageClicked( "Batu")
+            onImageClicked("Batu", "player")
         }
         guntingPlayer.setOnClickListener {
-            onImageClicked("Gunting")
+            onImageClicked("Gunting", "player")
         }
         kertasPlayer.setOnClickListener {
-            onImageClicked("Kertas")
+            onImageClicked("Kertas", "player")
+        }
+        if (data?.foe == "Player 2") {
+
+            batuCom.setOnClickListener {
+                onImageClicked("Batu", "cpu")
+            }
+            guntingCom.setOnClickListener {
+                onImageClicked("Gunting", "cpu")
+            }
+            kertasCom.setOnClickListener {
+                onImageClicked("Kertas", "cpu")
+            }
         }
     }
 
-
-    private fun setBackground (playerVal: String, comVal: String) {
-
+    private fun setBackground(playerVal: String, comVal: String) {
         val backgroundColor = resources.getColor(R.color.baby_blue)
         batuPlayer.setBackgroundColor(Color.TRANSPARENT)
         guntingPlayer.setBackgroundColor(Color.TRANSPARENT)
@@ -121,19 +137,47 @@ class MainActivity : AppCompatActivity() {
         guntingCom.setBackgroundColor(Color.TRANSPARENT)
         kertasCom.setBackgroundColor(Color.TRANSPARENT)
 
-        when {
-            (playerVal == "Batu") -> batuPlayer.setBackgroundColor(backgroundColor)
-            (playerVal == "Gunting") -> guntingPlayer.setBackgroundColor(backgroundColor)
-            (playerVal == "Kertas") -> kertasPlayer.setBackgroundColor(backgroundColor)
+        when (playerVal) {
+            "Batu" -> batuPlayer.setBackgroundColor(backgroundColor)
+            "Gunting" -> guntingPlayer.setBackgroundColor(backgroundColor)
+            "Kertas" -> kertasPlayer.setBackgroundColor(backgroundColor)
         }
 
-        when {
-            (comVal == "Batu") -> batuCom.setBackgroundColor(backgroundColor)
-            (comVal == "Gunting") -> guntingCom.setBackgroundColor(backgroundColor)
-            (comVal == "Kertas") -> kertasCom.setBackgroundColor(backgroundColor)
+        when (comVal) {
+            "Batu" -> batuCom.setBackgroundColor(backgroundColor)
+            "Gunting" -> guntingCom.setBackgroundColor(backgroundColor)
+            "Kertas" -> kertasCom.setBackgroundColor(backgroundColor)
         }
     }
 
+    private fun twoPlayerSet(player1: String, player2: String, key: String) {
+        val backgroundColor = resources.getColor(R.color.baby_blue)
+
+        if (isFinish == true) return
+        when {
+            key == "player" -> {
+                playerOneChoice = player1
+                when (player1) {
+                    "Batu" -> batuPlayer.setBackgroundColor(backgroundColor)
+                    "Gunting" -> guntingPlayer.setBackgroundColor(backgroundColor)
+                    "Kertas" -> kertasPlayer.setBackgroundColor(backgroundColor)
+                }
+                Toast.makeText(this, "fill player one $player1", Toast.LENGTH_SHORT).show()
+            }
+            key == "cpu" -> {
+                comChoice = player2
+                when (player2) {
+                    "Batu" -> batuCom.setBackgroundColor(backgroundColor)
+                    "Gunting" -> guntingCom.setBackgroundColor(backgroundColor)
+                    "Kertas" -> kertasCom.setBackgroundColor(backgroundColor)
+                }
+                Toast.makeText(this, "fill player two $player2", Toast.LENGTH_SHORT).show()
+            }
+        }
+        if (playerOneChoice != "" && comChoice != "") {
+            checkResult()
+        }
+    }
 
     private fun checkResult() {
         val result = computeResult()
@@ -142,38 +186,77 @@ class MainActivity : AppCompatActivity() {
         middleTextStatus.setTextColor(Color.WHITE)
         middleTextStatus.setTextSize(0, 48F)
 
-        when(result) {
+        when (result) {
             "Draw" -> middleTextStatus.setBackgroundColor(resources.getColor(R.color.background_blue))
             else -> middleTextStatus.setBackgroundColor(resources.getColor(R.color.winning_background))
         }
 
+        isFinish = true
         Log.i("Result", "Game Result: $result")
     }
 
     private fun computeResult(): String {
-        if(playerOneChoice == "" && comChoice == "") return "Vs"
+        if (playerOneChoice == "" && comChoice == "") return "Vs"
         val result = when {
             (playerOneChoice == "Kertas" && comChoice == "Batu") -> {
-                "Player 1\nMenang !!"
+                "${data?.player} Menang !!"
             }
             (playerOneChoice == "Kertas" && comChoice == "Gunting") -> {
-                "Computer\nMenang !!"
+//                if (data?.foe == "Player 2") {
+//                    "Pemain 2 Menang"
+//                } else "Computer Menang !!"
+                "${data?.foe} Menang"
             }
             (playerOneChoice == "Gunting" && comChoice == "Batu") -> {
-                "Computer\nMenang !!"
+//                if (data?.foe == "Player 2") {
+//                    "Pemain 2 Menang"
+//                } else "Computer Menang !!"
+                "${data?.foe} Menang"
             }
             (playerOneChoice == "Gunting" && comChoice == "Kertas") -> {
-                "Player 1\nMenang !!"
+                "${data?.player} Menang !!"
             }
             (playerOneChoice == "Batu" && comChoice == "Gunting") -> {
-                "Player 1\nMenang !!"
+                "${data?.player} Menang !!"
             }
             (playerOneChoice == "Batu" && comChoice == "Kertas") -> {
-                "Computer\nMenang !!"
+//                if (data?.foe == "Player 2") {
+//                    "Pemain 2 Menang"
+//                } else "Computer Menang !!"
+                "${data?.foe} Menang"
             }
-            else -> "Draw"
+            else -> "Seri !!"
         }
+        dialogModal(result)
         return result
     }
 
+    private fun dialogModal(result: String) {
+        val dialogView =
+            LayoutInflater.from(this@MainActivity).inflate(R.layout.dialog_result, null, false)
+        val dialogBuilder = AlertDialog.Builder(this@MainActivity)
+        dialogBuilder.setView(dialogView)
+
+        val dialog = dialogBuilder.create()
+        dialog.setCancelable(false)
+
+        dialogView.txtDialogResult.text = result
+        dialogView.btnMainLagi.setOnClickListener { viewDialog ->
+            resetButton()
+            dialog.dismiss()
+        }
+        dialogView.btnKembaliMenu.setOnClickListener { viewDialog ->
+            resetButton()
+            startActivity(
+                Intent(this@MainActivity, LandingPageActivity::class.java)
+                    .putExtra("name", "yuda")
+            )
+        }
+        dialog.show()
+    }
+
+    override fun onBackPressed() {
+        Log.i("TAGBack", "onBackPressed: ")
+        finishAffinity()
+    }
 }

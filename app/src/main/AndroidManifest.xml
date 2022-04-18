@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LandingPage.LandingPageActivity"
+            android:name=".landingPage.LandingPageActivity"
             android:exported="false"></activity>
         <activity
             android:name=".MainActivity"

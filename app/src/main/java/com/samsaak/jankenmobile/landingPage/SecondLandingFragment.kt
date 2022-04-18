@@ -1,4 +1,4 @@
-package com.samsaak.jankenmobile.LandingPage
+package com.samsaak.jankenmobile.landingPage
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

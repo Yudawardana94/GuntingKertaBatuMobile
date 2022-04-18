@@ -1,21 +1,21 @@
-package com.samsaak.jankenmobile.LandingPage
+package com.samsaak.jankenmobile.landingPage
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import com.samsaak.jankenmobile.MainActivity
-import com.samsaak.jankenmobile.MenuActivity
-import com.samsaak.jankenmobile.PagerAdapter
-import com.samsaak.jankenmobile.Player
+import android.util.Log
+import android.widget.Toast
+import com.samsaak.jankenmobile.*
 import com.samsaak.jankenmobile.databinding.ActivityLandingPageBinding
+import kotlinx.android.synthetic.main.fragment_third_landing.*
 
-class LandingPageActivity : AppCompatActivity() {
+class LandingPageActivity : AppCompatActivity(), OnDataPass {
     private lateinit var binding: ActivityLandingPageBinding
 
     private val pagerAdapter by lazy {
         PagerAdapter(supportFragmentManager)
     }
+    var playerNamePass: String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLandingPageBinding.inflate(layoutInflater)
@@ -32,12 +32,23 @@ class LandingPageActivity : AppCompatActivity() {
             }
 //            btnNext.visibility = View.GONE
             btnNext.setOnClickListener {
-                val player = Player(name= "yuda")
+                val playerName = playerNamePass
+
+                Toast.makeText(this@LandingPageActivity, "welcome $playerName", Toast.LENGTH_SHORT).show()
+                val player = Player(name= playerName)
                 val intent = Intent(Intent(this@LandingPageActivity, MenuActivity::class.java)).apply {
                     putExtra("data", player)
                 }
                 startActivity(intent)
             }
         }
+    }
+
+    override fun onBackPressed() {
+        finishAffinity()
+    }
+
+    override fun onDataPass(data: String) {
+        playerNamePass = data
     }
 }

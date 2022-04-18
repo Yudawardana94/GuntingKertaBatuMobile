@@ -20,13 +20,12 @@ class MenuActivity : AppCompatActivity() {
         binding = ActivityMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.run {
-            binding.root.showSnackbar("panggil snack bar ${data?.name}")
+            binding.root.showSnackbar("Selamat datang ${data?.name}")
 
             txtVsKomputer.text = "${data?.name} vs CPU"
             txtVsPemain.text = "${data?.name} vs Player 2"
 
             imgVsKomputer.setOnClickListener { viewCom ->
-                txtVsKomputer.setText("${data?.name} vs CPU")
                 foe = Foe(foe = "CPU", player = "${data?.name}")
                 val intent = Intent(Intent(this@MenuActivity, MainActivity::class.java)).apply {
                     putExtra("data", foe)
@@ -34,7 +33,6 @@ class MenuActivity : AppCompatActivity() {
                 startActivity(intent)
             }
             imgVsPemain.setOnClickListener { viewPlayer ->
-                txtVsPemain.setText("${data?.name} vs Player 2")
                 foe = Foe(foe = "Player 2", player = "${data?.name}")
                 val intent = Intent(Intent(this@MenuActivity, MainActivity::class.java)).apply {
                     putExtra("data", foe)

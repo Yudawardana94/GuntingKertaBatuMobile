@@ -12,6 +12,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_menu.xml" value="0.2171875" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.2171875" />
+        <entry key="app/src/main/res/layout/dialog_result.xml" value="0.2171875" />
         <entry key="app/src/main/res/layout/fragment_first_landing.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_second_landing.xml" value="0.2171875" />
         <entry key="app/src/main/res/layout/fragment_third_landing.xml" value="0.2171875" />
